@@ -1,5 +1,6 @@
 <?php
 
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,32 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+/*
+* Display all Tasks
+*/
+Route::get('/', function (){
+
+});
+
+/*
+* Add a new task
+*/
+Route::post('/task', function (){
+    
+});
+
+/*
+* Update a task
+*/
+Route::patch('/task/{id}', function (){
+    
+});
+
+/*
+* Delete a task
+*/
+Route::delete('/task/{id}', function (){
+    
 });
