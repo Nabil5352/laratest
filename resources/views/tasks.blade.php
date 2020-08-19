@@ -15,7 +15,7 @@
                 <label for="task" class="col-sm-3 control-label">Task</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="name" id="task-name" class="form-control">
+                    <input type="text" placeholder="task name" name="name" id="task-name" class="form-control">
                 </div>
             </div>
 
@@ -28,6 +28,49 @@
             </div>
         </form>
 
-        <!--Todo: Current task-->
+        <!-- Current task-->
+        @if (count($tasks) > 0)
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Current Tasks
+                </div>
+
+                <div class="panel-body">
+                    <table class="table table-striped task-table">
+
+                        <!-- Table Headings -->
+                        <thead>
+                            <th>Task</th>
+                            <th>&nbsp;</th>
+                        </thead>
+
+                        <!-- Table Body -->
+                        <tbody>
+                            @foreach ($tasks as $task)
+                                <tr>
+                                    <!-- Task Name -->
+                                    <td class="table-text">
+                                        <div>{{ $task->name }}</div>
+                                    </td>
+                                    <td>
+                                        <!-- Edit Button -->
+                                        <a href="task/{{$task->id}}/edit">Edit Task</a>
+                                    </td>
+                                    <td>
+                                        <!-- Delete Button -->
+                                        <form action="task/{{$task->id}}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('DELETE')}}
+
+                                            <button>Delete Task</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'TaskController@index')->name('task.index');
+Route::get('/home', 'TaskController@index')->name('task.index');
+
+Route::post('/task', 'TaskController@new')->name('task.new');
+Route::get('/task/{id}/edit', 'TaskController@edit')->name('task.edit');
+Route::patch('/task/{id}', 'TaskController@update')->name('task.update');
+Route::delete('/task/{id}', 'TaskController@delete')->name('task.delete');
